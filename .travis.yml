@@ -6,4 +6,4 @@ before_script:
   - truffle version
   - npm update
 script:
-  - npm run migrate:ropsten
+  - npm run migrate:mainnet
