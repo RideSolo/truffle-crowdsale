@@ -5,7 +5,7 @@
  "author": "Capital Technologies & Research <office@mycapitalco.in>",
  "license": "MIT",
  "dependencies": {
-  "openzeppelin-solidity": "^1.10.0"
+  "openzeppelin-solidity": "1.10.0"
  },
  "scripts": {
   "migrate:mainnet": "truffle migrate --network mainnet",
