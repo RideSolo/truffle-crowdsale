@@ -9,7 +9,7 @@ import './TeamVault.sol';
 import './BountyVault.sol';
 import 'openzeppelin-solidity/contracts/crowdsale/distribution/utils/RefundVault.sol';
 contract FiatContract {
-  function USD(uint _id) constant returns (uint256);
+  function USD(uint _id) public view returns (uint256);
 }
 contract CapitalTechCrowdsale is Ownable {
   using SafeMath for uint256;
@@ -62,7 +62,7 @@ contract CapitalTechCrowdsale is Ownable {
   function powerUpContract() public onlyOwner {
     require(!powered_up);
     require(!is_finalized);
-    stageStartTime = block.timestamp;
+    stageStartTime = 1498867200;
     stage = stages.PRIVATE_SALE;
     weiRaised = 0;
   	distributeTeam();
@@ -208,7 +208,6 @@ contract CapitalTechCrowdsale is Ownable {
     if (_beneficiary == address(0)) {
       _beneficiary = msg.sender;
     }
-    (uint256 _hardcapCall, uint256 _hardcapCallg) = getHardCap();
     uint256 weiAmount = msg.value;
     require(weiAmount > 0);
     require(_beneficiary != address(0));
