@@ -17,5 +17,8 @@ module.exports = function(deployer, network, accounts) {
     .then(() => {
       return deployer.deploy(CapitalTechCrowdsale, wallet, FiatContract.address, CALLToken.address, CALLGToken.address);
     })
+	.then(() => {
+      return deployer.deploy(CapitalBountyDelivery, CALLToken.address, CALLGToken.address);
+    })
     .catch(console.error);
 };
