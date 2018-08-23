@@ -2,6 +2,7 @@ const FiatContract = artifacts.require("./FiatContract.sol");
 const CALLGToken = artifacts.require("./CALLGToken.sol");
 const CALLToken = artifacts.require("./CALLToken.sol");
 const CapitalTechCrowdsale = artifacts.require("./CapitalTechCrowdsale.sol");
+const CapitalBountyDelivery = artifacts.require("./CapitalBountyDelivery.sol");
 module.exports = function(deployer, network, accounts) {
   const wallet = accounts[0];
   return deployer
