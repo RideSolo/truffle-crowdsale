@@ -127,6 +127,7 @@ Executes buy function
 ## Collaborators
 
 * **[Ionuț Moraru](https://github.com/morion4000/)**
+* **[Marinescu Adrian](https://www.facebook.com/marinescu.adrian.crypto)**
 
 [capital-tech]: https://www.mycapitalco.in/
 [ethereum]: https://www.ethereum.org/
