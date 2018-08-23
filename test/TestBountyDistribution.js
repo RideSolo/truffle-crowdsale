@@ -18,7 +18,7 @@ const CapitalBountyDelivery = artifacts.require("./CapitalBountyDelivery.sol");
 const CapitalTechCrowdsale = artifacts.require("./CapitalTechCrowdsale.sol");
 const parameters = require('./local_parameters.json');
 
-contract("TestBountyVault", function([owner, wallet, investor, otherInvestor]) {
+contract("TestBountyDistribution", function([owner, wallet, investor, otherInvestor]) {
   before(async function() {
     await advanceBlock();
     this.crowdsale = await CapitalTechCrowdsale.deployed();
@@ -49,12 +49,12 @@ contract("TestBountyVault", function([owner, wallet, investor, otherInvestor]) {
   });
 
   it("The Bounty Vault contract should send tokens to Bounty Delivery contract", async function() {
-    await this.crowdsale.withdrawBounty(bounty_delivery.address, {
+    await this.crowdsale.withdrawBounty(this.bounty_delivery.address, {
       from: owner
     });
 
-    const balance = await this.call_token.balanceOf.call(bounty_delivery);
-    const balance_callg = await this.callg_token.balanceOf.call(bounty_delivery);
+    const balance = await this.call_token.balanceOf.call(this.bounty_delivery.address);
+    const balance_callg = await this.callg_token.balanceOf.call(this.bounty_delivery.address);
 
     balance.div(1e18).toNumber().should.be.equal(2625000);
     balance_callg.div(1e18).toNumber().should.be.equal(525000000);
