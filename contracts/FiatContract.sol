@@ -23,7 +23,7 @@ contract FiatContract {
     }
 
     // initialize function
-    constructor() {
+    constructor() public {
         creator = msg.sender;
         sender = msg.sender;
         FiatContract.update(0, "ETH", 1000000000000000000, 16823602840000, 19641330040000, 22457827430000);
@@ -35,27 +35,27 @@ contract FiatContract {
     }
 
     // returns rate price of coin related to ETH.
-    function ETH(uint _id) constant returns (uint256) {
+    function ETH(uint _id) public constant returns (uint256) {
         return tokens[_id].eth;
     }
 
     // returns 0.01 value in United States Dollar
-    function USD(uint _id) constant returns (uint256) {
+    function USD(uint _id) public constant returns (uint256) {
         return tokens[_id].usd;
     }
 
     // returns 0.01 value in Euro
-    function EUR(uint _id) constant returns (uint256) {
+    function EUR(uint _id) public constant returns (uint256) {
         return tokens[_id].eur;
     }
 
     // returns 0.01 value in British Pound
-    function GBP(uint _id) constant returns (uint256) {
+    function GBP(uint _id) public constant returns (uint256) {
         return tokens[_id].gbp;
     }
 
     // returns block when price was updated last
-    function updatedAt(uint _id) constant returns (uint) {
+    function updatedAt(uint _id) public constant returns (uint) {
         return tokens[_id].block;
     }
 
@@ -63,24 +63,24 @@ contract FiatContract {
     function update(uint id, string _token, uint256 eth, uint256 usd, uint256 eur, uint256 gbp) internal {
         require(msg.sender==sender);
         tokens[id] = Token(_token, eth, usd, eur, gbp, block.number);
-        NewPrice(id, _token);
+        emit NewPrice(id, _token);
     }
 
     // delete a token from the contract
-    function deleteToken(uint id) {
+    function deleteToken(uint id) public {
         require(msg.sender==creator);
-        DeletePrice(id);
+        emit DeletePrice(id);
         delete tokens[id];
     }
 
     // change creator address
-    function changeCreator(address _creator){
+    function changeCreator(address _creator) public {
         require(msg.sender==creator);
         creator = _creator;
     }
 
     // change sender address
-    function changeSender(address _sender){
+    function changeSender(address _sender) public {
         require(msg.sender==creator);
         sender = _sender;
     }
@@ -93,7 +93,7 @@ contract FiatContract {
     }
 
     // default function so this contract can accept ETH with low gas limits.
-    function() payable {
+    function() public payable {
 
     }
 
@@ -103,14 +103,14 @@ contract FiatContract {
         uint256 weiAmount = tokens[0].usd * 35;
         require(msg.value >= weiAmount);
         sender.transfer(msg.value);
-        RequestUpdate(id);
+        emit RequestUpdate(id);
     }
 
     // donation function that get forwarded to the contract updater
     function donate() external payable {
         require(msg.value >= 0);
         sender.transfer(msg.value);
-        Donation(msg.sender);
+        emit Donation(msg.sender);
     }
 
 }
