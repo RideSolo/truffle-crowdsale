@@ -22,10 +22,11 @@
 ## Contracts
 Contracts are available in [contracts/](contracts) directory
 *	[CapitalTechCrowdsale.sol](contracts/CapitalTechCrowdsale.sol) - Crowdsale Smart Contract
-	*	[BountyVault.sol](contracts/BountyVault.sol) - Bounty Vault
-	*	[TeamVault.sol](contracts/TeamVault.sol) - Bounty Vault
-		*	[CALLToken.sol](contracts/CALLToken.sol) - CAPITAL (CALL) Token
-		*	[CALLGToken.sol](contracts/CALLGToken.sol) - CAPITAL GAS (CALLG) Token
+	*	[CALLToken.sol](contracts/CALLToken.sol) - CAPITAL (CALL) Token
+	*	[CALLGToken.sol](contracts/CALLGToken.sol) - CAPITAL GAS (CALLG) Token
+		*	[BountyVault.sol](contracts/BountyVault.sol) - Bounty Vault
+		*	[TeamVault.sol](contracts/TeamVault.sol) - Bounty Vault
+		*	[CapitalBountyDelivery.sol](contracts/CapitalBountyDelivery.sol) - Bounty Delivery Contract
 
 ## The Crowdsale Specifications
 *	**Capital (CALL)** and **Capital GAS (CALLG)** are **ERC-20** compliant
