@@ -29,7 +29,7 @@ using SafeMath for uint256;
 		require(now >= 1531958400);
 		require(userWallet != address(0));
 		require(!distributedFirst[userWallet]);
-        uint _call = call.mul(10) ** 18;
+        uint _call = call * 10 ** 18;
 		uint _callg = _call.mul(200);
 		distributedFirst[userWallet] = true;
         require(token_call.transfer(userWallet, _call));
@@ -41,7 +41,7 @@ using SafeMath for uint256;
 		require(now >= 1538179200);
 		require(userWallet != address(0));
 		require(!distributedSecond[userWallet]);
-        uint _call = call.mul(10) ** 18;
+        uint _call = call * 10 ** 18;
 		uint _callg = _call.mul(200);
 		distributedSecond[userWallet] = true;
         require(token_call.transfer(userWallet, _call));
@@ -53,7 +53,7 @@ using SafeMath for uint256;
 		require(now >= 1531958400);
 		for(uint256 i = 0; i < _userWallet.length; i++) {
 			if (!distributedFirst[_userWallet[i]]) {
-				uint _call = call[i].mul(10) ** 18;
+				uint _call = call[i] * 10 ** 18;
 				uint _callg = _call.mul(200);
 				distributedFirst[_userWallet[i]] = true;
 				require(token_call.transfer(_userWallet[i], _call));
@@ -67,7 +67,7 @@ using SafeMath for uint256;
 		require(now >= 1538179200); 
 		for(uint256 i = 0; i < _userWallet.length; i++) {
 			if (!distributedSecond[_userWallet[i]]) {
-				uint _call = call[i].mul(10) ** 18;
+				uint _call = call[i] * 10 ** 18;
 				uint _callg = _call.mul(200);
 				distributedSecond[_userWallet[i]] = true;
 				require(token_call.transfer(_userWallet[i], _call));
